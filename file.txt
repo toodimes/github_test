@@ -1,0 +1,26 @@
+def kata04
+  input = File.open('football.dat') {|line| line.read } 
+  array = input.lines.map(&:split)
+
+  array_temp = 1
+  lowest_spread = 10000
+
+
+  #puts array[array_temp][6]
+  #puts array[array_temp][8]
+
+  while array_temp < array.length
+
+    spread = array[array_temp][6].to_i - array[array_temp][8].to_i
+    spread.abs
+
+    if spread < lowest_spread && spread > 0
+      lowest_spread = spread
+      array_team = array[array_temp][1]
+    end
+
+    array_temp += 1
+  end
+
+  puts "The team with the lowest spread is #{array_team} with a spread of #{lowest_spread}"
+end
