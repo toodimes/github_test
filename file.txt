@@ -24,3 +24,30 @@ def kata04
 
   puts "The team with the lowest spread is #{array_team} with a spread of #{lowest_spread}"
 end
+
+def kata041
+  input = File.open('weather.dat') {|line| line.read } 
+  array = input.lines.map(&:split)
+
+
+  array_temp = 2
+  lowest_spread = 10000
+
+#p array[2]
+
+  while array_temp < array.length
+    spread = array[array_temp][1].to_i - array[array_temp][2].to_i
+    spread.abs
+
+    if spread < lowest_spread
+      lowest_spread = spread
+      day = array[array_temp][0]
+    end
+    array_temp += 1
+
+  end
+
+
+  puts "The lowest spread was on day #{day} with a spread of #{lowest_spread}"
+
+end
